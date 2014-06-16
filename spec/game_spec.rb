@@ -49,5 +49,17 @@ describe Game do
     roll_many(20, 1)
     expect(game.score).to eq 20
   end
+
+  #next most interesting test case:
+  # all 5 won't pass as they mean all spares
+  # The simplest spare test is x1 spare followed by gutter balls
+
+  it "accomodates for spares" do
+    game.roll(5)
+    game.roll(5)  #spare
+    game.roll(3)  
+    roll_many(17,0)#x3 turns already taken, thus 17 remaining   
+    expect(game.score).to eq 16 #3 counted twice for spare
+  end
 end
 
