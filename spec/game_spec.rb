@@ -21,6 +21,11 @@ describe Game do
     end
   end
 
+  def roll_spare
+    game.roll(5)
+    game.roll(5) 
+  end
+
   it "can create a new game" do
     # expect(game).to be_true
   end
@@ -55,8 +60,7 @@ describe Game do
   # The simplest spare test is x1 spare followed by gutter balls
 
   it "accomodates for spares" do
-    game.roll(5)
-    game.roll(5)  #spare
+    roll_spare
     game.roll(3)  
     roll_many(17,0)#x3 turns already taken, thus 17 remaining   
     expect(game.score).to eq 16 #3 counted twice for spare
