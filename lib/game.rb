@@ -3,10 +3,11 @@ class Game
 
   def initialize
     @score = 0
+
   end
 
   def roll(pins)
-    @score = score + pins  
+    @score += pins  
   end
 
   # Know that our test below works as we have tested two cases:
@@ -15,6 +16,8 @@ class Game
   def score
     return @score
   end
+
+
 end
 
 
