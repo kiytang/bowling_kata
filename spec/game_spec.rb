@@ -19,5 +19,16 @@ describe Game do
       game.roll(0)
     end
   end
+
+  #for score method as it is based on the total of the 
+  # 10 frames, we will use the most degenerative complete game 
+  # we can roll is a gutter game (20 balls in a gutter game)
+
+  it "returns 0 for a complete gutter game" do
+    20.times do
+      game.roll(0)
+    end
+    expect(game.score).to eq 0
+  end
 end
 
