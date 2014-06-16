@@ -9,8 +9,9 @@ describe Game do
 end
 
 #write a role method
-describe "roll" do
+context "#{}roll" do
   "it can roll"
-  game = Game.new
-  game.roll(pins)
+    game = Game.new
+    game.roll(0)
+  end
 end
