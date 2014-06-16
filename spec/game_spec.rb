@@ -20,7 +20,7 @@ describe Game do
     end
   end
 
-  #for score method as it is based on the total of the 
+  # for score method as it is based on the total of the 
   # 10 frames, we will use the most degenerative complete game 
   # we can roll is a gutter game (20 balls in a gutter game)
 
@@ -29,6 +29,15 @@ describe Game do
       game.roll(0)
     end
     expect(game.score).to eq 0
+  end
+
+  # next most trivial game is based on a score of all ones
+  # thus returning a total score of 20
+  it "returns 20 for a complete game where 1 is recorded for every turn" do
+    20.times do
+      game.roll(1)
+    end
+    expect(game.score).to eq 20
   end
 end
 
