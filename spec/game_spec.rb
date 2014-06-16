@@ -7,3 +7,10 @@ describe Game do
     game = Game.new
   end
 end
+
+#write a role method
+describe "roll" do
+  "it can roll"
+  game = Game.new
+  game.roll(pins)
+end
