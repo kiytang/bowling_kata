@@ -17,11 +17,14 @@ class Game
     frame = 0
     first_in_frame = 0  #index of the first ball in the frame
     while frame < 10 # loop through frame 1 at a time
-      if is_spare?(first_in_frame) #spare
-        score += 10 + @rolls[first_in_frame+2] #score for spare is 10 + the next ball you roll
+      if is_strike?(first_in_frame) 
+        score += 10 + next_two_balls_for_strike(first_in_frame)
+        first_in_frame +=1 #only x1 ball in stike frame
+      elsif is_spare?(first_in_frame)
+        score += 10 + next_ball_for_spare(first_in_frame)
         first_in_frame += 2 #x2 balls in this frame thus increment first_in_frame by 2:walking through the array x2 balls at a time
       else
-        score += @rolls[first_in_frame] + @rolls[first_in_frame+1]
+        score += two_balls_in_frame(first_in_frame)
         first_in_frame += 2
       end
       frame += 1
@@ -33,6 +36,21 @@ class Game
     @rolls[first_in_frame] + @rolls[first_in_frame+1] == 10
   end
 
+  def is_strike?(first_in_frame)
+    @rolls[first_in_frame] == 10
+  end
+
+  def next_two_balls_for_strike(first_in_frame)
+    @rolls[first_in_frame+1] + @rolls[first_in_frame+2]
+  end
+
+  def next_ball_for_spare(first_in_frame)
+    @rolls[first_in_frame+2] #score for spare is 10 + the next ball you roll
+  end
+
+  def two_balls_in_frame(first_in_frame)
+    @rolls[first_in_frame] + @rolls[first_in_frame+1]
+  end
 end
 
 
