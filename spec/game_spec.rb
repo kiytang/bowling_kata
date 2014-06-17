@@ -59,11 +59,19 @@ describe Game do
   # all 5 won't pass as they mean all spares
   # The simplest spare test is x1 spare followed by gutter balls
 
-  it "accomodates for spares" do
+  it "records for spares" do
     roll_spare
     game.roll(3)  
     roll_many(17,0)#x3 turns already taken, thus 17 remaining   
     expect(game.score).to eq 16 #3 counted twice for spare
+  end
+
+  it "records for stikes" do
+    game.roll(10) #strike
+    game.roll(3)
+    game.roll(4)
+    roll_many(16,0) #8 frames of gutter balls
+    expect(game.score).to eq 24
   end
 end
 
